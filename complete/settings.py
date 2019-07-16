@@ -14,9 +14,11 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_DIR = os.path.join(BASE_DIR,'static')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = STATIC_DIR
 
-##### Channels-specific settings
+
+# Channels-specific settings
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
@@ -36,8 +38,7 @@ CHANNEL_LAYERS = {
 ASGI_APPLICATION = 'complete.routing.application'
 
 
-##### Project-specific settings
-
+# Project-specific settings
 
 
 MSG_TYPE_MESSAGE = 0  # For standard messages
@@ -127,8 +128,7 @@ ROOT_URLCONF = 'complete.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -194,18 +194,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR,]
+STATICFILES_DIRS = [STATIC_DIR, ]
 
 
-LOGIN_REDIRECT_URL='/accounts/'
+LOGIN_REDIRECT_URL = '/accounts/'
 
-MEDIA_ROOT=os.path.join(BASE_DIR, 'tutorial/media')
-MEDIA_URL='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tutorial/media')
+MEDIA_URL = '/media/'
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 262
 
-#EMAIL_HOST='localhost'
-#EMAIL_PORT=1025
+# EMAIL_HOST='localhost'
+# EMAIL_PORT=1025
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
